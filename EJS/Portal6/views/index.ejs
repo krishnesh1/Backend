@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f8;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 700px;
+        margin: 40px auto;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        border-radius: 8px;
+        padding: 32px;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 24px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 24px;
+        background: #fafafa;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      th, td {
+        text-align: left;
+        padding: 12px;
+        border-bottom: 1px solid #e0e0e0;
+      }
+      th {
+        background: #e3e7ed;
+        color: #444;
+      }
+      tr:last-child td {
+        border-bottom: none;
+      }
+      .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-top: 16px;
+      }
+      .pagination a {
+        text-decoration: none;
+        color: #1976d2;
+        padding: 6px 12px;
+        border-radius: 4px;
+        border: 1px solid #1976d2;
+        transition: background 0.2s, color 0.2s;
+      }
+      .pagination a.active {
+        background: #1976d2;
+        color: #fff;
+        font-weight: bold;
+      }
+      .pagination button {
+        padding: 6px 12px;
+        border-radius: 4px;
+        border: none;
+        background: #1976d2;
+        color: #fff;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .pagination button:disabled {
+        background: #b0b0b0;
+        cursor: not-allowed;
+      }
+    </style>
+    <div class="container">
+      <h1>Portal Data</h1>
+      <table border="1" cellspacing="0" cellpadding="1">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%data.forEach((val)=>{%>
+          <tr style="background-color: #f9f9f9;">
+            <td style="padding: 8px; border: 1px solid #ddd;"><%=val.id%></td>
+            <td style="padding: 8px; border: 1px solid #ddd;"><%=val.name%></td>
+          </tr>
+          <%})%>
+        </tbody>
+      </table>
+      <div class="pagination">
+        <!-- Prev Button -->
+        <% if (currentPage > 1) { %>
+        <a href="/?page=<%= currentPage - 1 %>&limit"><button>Prev</button></a>
+        <% } else { %>
+        <button disabled>Prev</button>
+        <% } %>
+
+        <!-- Page Numbers -->
+        <% for (let i = 1; i <= totalPages; i++) { %>
+        <a
+          href="/?page=<%= i %>&limit"
+          class="<%= i === currentPage ? 'active' : '' %>"
+          ><%= i %></a
+        >
+        <% } %>
+
+        <!-- Next Button -->
+        <% if (currentPage < totalPages) { %>
+        <a href="/?page=<%= currentPage + 1 %>&limit"><button>Next</button></a>
+        <% } else { %>
+        <button disabled>Next</button>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>

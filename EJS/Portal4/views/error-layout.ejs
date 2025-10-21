@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error - <%= errorData.statusCode %></title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .error-box {
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h1 { color: #d9534f; }
+    p { margin: 8px 0; }
+    .suggestion { margin-top: 15px; font-weight: bold; color: #555; }
+  </style>
+</head>
+<body>
+  <div class="error-box">
+    <% if (errorData.errorType === "NOT_FOUND") { %>
+      <h1>Page Not Found</h1>
+    <% } else if (errorData.errorType === "SERVER_ERROR") { %>
+      <h1>Internal Server Error</h1>
+    <% } else if (errorData.errorType === "VALIDATION") { %>
+      <h1>Validation Error</h1>
+    <% } else { %>
+      <h1>Unexpected Error</h1>
+    <% } %>
+
+    <p><strong>Status Code:</strong> <%= errorData.statusCode %></p>
+    <p><strong>Message:</strong> <%= errorData.message %></p>
+    <p><strong>Timestamp:</strong> <%= errorData.timestamp %></p>
+    <% if (errorData.requestUrl) { %>
+      <p><strong>Request URL:</strong> <%= errorData.requestUrl %></p>
+    <% } %>
+
+    <div class="suggestion">
+      <% if (errorData.errorType === "NOT_FOUND") { %>
+        Go back to <a href="/">Home Page</a>.
+      <% } else if (errorData.errorType === "SERVER_ERROR") { %>
+        Please try again later.
+      <% } else if (errorData.errorType === "VALIDATION") { %>
+        Fix the highlighted form inputs and resubmit.
+      <% } else { %>
+        Contact support if the issue persists.
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>

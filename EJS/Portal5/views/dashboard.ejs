@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #007bff;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-top: 0;
+    }
+    .badge {
+      display: inline-block;
+      padding: 5px 10px;
+      margin-left: 10px;
+      border-radius: 5px;
+      background: gold;
+      color: black;
+      font-weight: bold;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .grade-A {
+      background: #d4edda;
+      color: #155724;
+    }
+    .grade-BC {
+      background: #d1ecf1;
+      color: #0f309e;
+    }
+    .grade-other {
+      background: #f8d7da;
+      color: #721c24;
+    }
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+    }
+    .notice-box {
+      margin: 20px 0;
+      padding: 15px;
+      border: 1px solid #ddd;
+      background: #fefefe;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome, <%= student.name %>!</h1>
+    <p><%= student.email %></p>
+    <% if (student.role === "admin") { %>
+      <span class="badge">★ Admin Access</span>
+    <% } %>
+  </header>
+
+  <div class="container">
+    <h2>Your Courses</h2>
+    <% if (courses.length > 0) { %>
+      <ul>
+        <% courses.forEach(course => { %>
+          <li class="
+            <% if (course.grade === 'A') { %> grade-A 
+            <% } else if (course.grade === 'B' || course.grade === 'C') { %> grade-BC
+            <% } else { %> grade-other <% } %>
+          ">
+            <strong><%= course.title %></strong> — Grade: <%= course.grade %>
+          </li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p>No courses enrolled yet</p>
+    <% } %>
+
+    <div class="notice-box">
+      <h3>Notice</h3>
+      <p>Escaped: <%= notice %></p>
+      <p>Unescaped: <%- notice %></p>
+    </div>
+  </div>
+
+  <footer>
+    <%- include("footer") %>
+  </footer>
+</body>
+</html>

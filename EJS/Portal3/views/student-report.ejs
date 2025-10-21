@@ -1,0 +1,27 @@
+<table border="1" cellspacing="0" cellpadding="8">
+  <thead>
+    <h3 style="">Student Report</h3>
+    <tr>
+      <th>Name</th>
+      <th>Math</th>
+      <th>Science</th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% students.forEach((val) => { %>
+      <tr>
+        <td><%= val.name %></td>
+        <td style="color: <%= val.marks.math < 70 ? 'red' : 'black' %>;">
+          <%= val.marks.math %>
+        </td>
+        <td style="color: <%= val.marks.science < 70 ? 'red' : 'black' %>;">
+          <%= val.marks.science %>
+        </td>
+        <td style="color: <%= val.marks.english < 70 ? 'red' : 'black' %>;">
+          <%= val.marks.english %>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
