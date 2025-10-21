@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Home</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 500px;
+        margin: 60px auto;
+        background: #fff;
+        padding: 30px 40px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      h1 {
+        color: #333;
+        margin-bottom: 20px;
+      }
+      .btn {
+        display: inline-block;
+        margin: 10px 5px;
+        padding: 10px 24px;
+        background: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome, Admin!</h1>
+      <p>Use the options below to manage the portal.</p>
+      <a href="usermanagement.html" class="btn">User Management</a>
+      <a href="settings.html" class="btn">Settings</a>
+      <form action="/logout" method="POST">
+        <button type="submit" class="btn">Logout</button>
+      </form>
+    </div>
+  </body>
+</html>

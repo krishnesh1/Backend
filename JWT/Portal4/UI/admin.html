@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Panel - Active Tokens</title>
+    <style>
+      body {
+        font-family: "Roboto", Arial, sans-serif;
+        background: #f4f6f8;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 900px;
+        margin: 40px auto;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        padding: 32px;
+      }
+      h1 {
+        text-align: center;
+        color: #2d3748;
+        margin-bottom: 32px;
+        font-weight: 700;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 16px;
+      }
+      th,
+      td {
+        padding: 14px 12px;
+        text-align: left;
+      }
+      th {
+        background: #2b6cb0;
+        color: #fff;
+        font-weight: 700;
+      }
+      tr:nth-child(even) {
+        background: #f7fafc;
+      }
+      tr:hover {
+        background: #e2e8f0;
+      }
+      .username {
+        font-weight: 500;
+        color: #2b6cb0;
+      }
+      .time {
+        font-family: "Roboto Mono", monospace;
+        color: #4a5568;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Active Tokens</h1>
+      <form action="/logout" method="POST">
+        <button type="submit" class="btn">Logout</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Token Issue Time</th>
+            <th>Token Expiration Time</th>
+          </tr>
+        </thead>
+        <tbody id="tokens-table-body"></tbody>
+      </table>
+    </div>
+    <script>
+      async function loadTokens() {
+
+        const res = await fetch("/api/active-tokens");
+        const data = await res.json();
+
+        console.log(data);
+        const tbody = document.getElementById("tokens-table-body");
+        tbody.innerHTML = "";
+        data.forEach((t) => {
+          tbody.innerHTML += `
+        <tr>
+          <td class="username">${t.username}</td>
+          <td class="time">${new Date(t.issuedAt).toLocaleString()}</td>
+          <td class="time">${new Date(t.expiresAt).toLocaleString()}</td>
+        </tr>
+      `;
+        });
+      }
+      loadTokens();
+    </script>
+  </body>
+</html>

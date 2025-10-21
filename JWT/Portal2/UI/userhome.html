@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 60px auto;
+            background: #fff;
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .welcome {
+            margin: 20px 0;
+            color: #555;
+        }
+        .btn-logout {
+            background: #0078d4;
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-logout:hover {
+            background: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>User Home</h1>
+        <div class="welcome">
+            Welcome to your portal!
+        </div>
+        <form action="/logout" method="POST">
+        <button type="submit" class="btn-logout">Logout</button>
+      </form>
+    </div>
+    <script>
+      
+    </script>
+</body>
+</html>

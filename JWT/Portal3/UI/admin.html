@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f6f8; margin: 0; }
+        header { background: #2d3e50; color: #fff; padding: 20px; text-align: center; }
+        nav { background: #fff; padding: 10px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        nav a { color: #2d3e50; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        .container { max-width: 900px; margin: 30px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.07);}
+        h2 { color: #2d3e50; }
+        .stats { display: flex; gap: 30px; margin-bottom: 30px; }
+        .card { flex: 1; background: #f8fafc; padding: 20px; border-radius: 6px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.04);}
+        .card h3 { margin: 0; font-size: 2em; color: #3498db; }
+        .card p { margin: 10px 0 0; color: #555; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; border-bottom: 1px solid #eee; text-align: left; }
+        th { background: #f4f6f8; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+    </header>
+    <nav>
+        <a href="#">Users</a>
+        <a href="#">Reports</a>
+        <a href="#">Settings</a>
+        <form action="/logout" method="POST">
+        <button type="submit" class="btn">Logout</button>
+      </form>
+    </nav>
+    <div class="container">
+        <h2>Overview</h2>
+        <div class="stats">
+            <div class="card">
+                <h3>120</h3>
+                <p>Active Users</p>
+            </div>
+            <div class="card">
+                <h3>15</h3>
+                <p>Pending Tasks</p>
+            </div>
+            <div class="card">
+                <h3>5</h3>
+                <p>New Reports</p>
+            </div>
+        </div>
+        <h2>Recent Users</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>Alice Smith</td>
+                <td>alice@example.com</td>
+                <td>Active</td>
+            </tr>
+            <tr>
+                <td>Bob Johnson</td>
+                <td>bob@example.com</td>
+                <td>Inactive</td>
+            </tr>
+            <tr>
+                <td>Carol Lee</td>
+                <td>carol@example.com</td>
+                <td>Active</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
